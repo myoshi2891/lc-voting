@@ -12,8 +12,7 @@
         <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
             <div class="flex-none mx-2 md:mx-4">
                 <a href="#">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                        class="w-14 h-14 rounded-xl">
+                    <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
                 </a>
             </div>
             <div class="w-full mx-2 md:mx-4">
@@ -285,7 +284,7 @@
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar"
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
                             class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
@@ -339,7 +338,7 @@
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=2" alt="avatar"
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=4" alt="avatar"
                             class="w-14 h-14 rounded-xl">
                     </a>
                 </div>

@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <livewire:styles />
 </head>
 
 <body class="font-sans bg-gray-background text-grey-900 text-sm">
@@ -136,6 +137,7 @@
             </div>
         </div>
     </main>
+    <livewire:scripts />
 </body>
 
 </html>

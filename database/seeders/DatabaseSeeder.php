@@ -40,6 +40,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Idea::factory(100)->create();
 
+        $idea->isVotedByUser($user);
+
         foreach (range(1, 20) as $user_id) {
             foreach (range(1, 100) as $idea_id) {
                 if ($idea_id % 2 == 0) {

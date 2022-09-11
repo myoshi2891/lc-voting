@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Status;
 use Livewire\Livewire;
 use App\Models\Category;
+use App\Http\Livewire\IdeasIndex;
 use App\Http\Livewire\StatusFilters;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -88,7 +89,10 @@ class StatusFiltersTest extends TestCase
         //     ->assertSee('Implemented (2)');
     }
 
-    /** @test */
+    /**
+     * @test
+     * @group testing
+     */
     public function filltering_works_when_query_string_in_place()
     {
         $user = User::factory()->create();
@@ -97,7 +101,7 @@ class StatusFiltersTest extends TestCase
 
         $statusOpen = Status::factory()->create(['name' => 'Open']);
         $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
-        $statusInProgress = Status::factory()->create(['name' => 'InProgress', 'classes' => 'bg-yellow text-white']);
+        $statusInProgress = Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow text-white']);
         $statusImplemented = Status::factory()->create(['name' => 'Implemented']);
         $statusClosed = Status::factory()->create(['name' => 'Closed']);
 
@@ -127,10 +131,12 @@ class StatusFiltersTest extends TestCase
             'status_id' => $statusInProgress->id,
         ]);
 
-        $response = $this->get(route('idea.index', ['status' => 'In Progress']));
-        $response->assertSuccessful();
-        $response->assertSee('In Progress', false);
-        $response->assertSee('Implemented', false);
+        Livewire::withQueryParams(['status' => 'In Progress'])
+            ->test(IdeasIndex::class)
+            ->assertViewHas('ideas', function ($ideas) {
+                return $ideas->count() === 3
+                    && $ideas->first()->status->name === 'In Progress';
+            });
     }
 
 

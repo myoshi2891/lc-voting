@@ -208,7 +208,6 @@ class OtherFiltersTest extends TestCase
   }
   /**
    * @test
-   * @group testing
    */
   public function no_filters_works_correctly()
   {

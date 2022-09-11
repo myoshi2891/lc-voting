@@ -104,7 +104,6 @@ class SearchFilterTest extends TestCase
 
   /**
    * @test
-   * @group testing
    */
   public function search_works_correctly_with_category_filters()
   {

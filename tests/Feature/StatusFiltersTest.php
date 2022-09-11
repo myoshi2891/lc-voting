@@ -91,7 +91,6 @@ class StatusFiltersTest extends TestCase
 
     /**
      * @test
-     * @group testing
      */
     public function filltering_works_when_query_string_in_place()
     {

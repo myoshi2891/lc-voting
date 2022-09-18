@@ -19,7 +19,6 @@ class NotifyAllVotersTest extends TestCase
 
     /**
      * @test
-     * @group test
      */
     public function it_sends_an_email_to_all_voters()
     {

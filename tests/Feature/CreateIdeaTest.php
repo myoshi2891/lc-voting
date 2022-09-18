@@ -15,14 +15,15 @@ class CreateIdeaTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    /** @test
+     */
     public function create_idea_form_does_not_show_when_logged_out()
     {
         $response = $this->get(route('idea.index'));
 
         $response->assertSuccessful();
         $response->assertSee('Please login to create an idea.');
-        $response->assertDontSee("Let us know what you would like and we'll take a look over!");
+        $response->assertDontSee("Let us know what you would like and we'll take a look over!", false);
     }
 
     /** @test */
@@ -56,15 +57,15 @@ class CreateIdeaTest extends TestCase
             ->assertSee('The title field is required');
     }
 
-    /** @test */
+    /** @test
+     */
     public function creating_an_idea_works_correctly()
     {
         $user = User::factory()->create();
 
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
-        $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
 
         Livewire::actingAs($user)
             ->test(CreateIdea::class)
@@ -82,17 +83,22 @@ class CreateIdeaTest extends TestCase
         $this->assertDatabaseHas('ideas', [
             'title' => 'My First Idea'
         ]);
+
+        $this->assertDatabaseHas('votes', [
+            'idea_id' => 1,
+            'user_id' => 1,
+        ]);
     }
 
-    /** @test */
+    /** @test
+     */
     public function creating_two_ideas_with_same_title_still_works_but_has_different_slugs()
     {
         $user = User::factory()->create();
 
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
-        $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
 
         Livewire::actingAs($user)
             ->test(CreateIdea::class)

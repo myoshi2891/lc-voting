@@ -19,6 +19,7 @@ class NotifyAllVotersTest extends TestCase
 
     /**
      * @test
+     * The expected [App\Mail\IdeaStatusUpdatedMailable] mailable was not queued.
      */
     public function it_sends_an_email_to_all_voters()
     {

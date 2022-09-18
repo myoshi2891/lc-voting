@@ -12,11 +12,11 @@ class GravatarTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    /** @test
+     */
     public function user_can_generate_garavatar_default_image_when_no_email_found_first_character_a()
     {
         $user = User::factory()->create([
-            'name' => 'Andrew',
             'email' => 'afakeemail@fakeemail.com',
         ]);
 
@@ -32,11 +32,11 @@ class GravatarTest extends TestCase
         $this->assertTrue($response->successful());
     }
 
-    /** @test */
+    /** @test
+     */
     public function user_can_generate_garavatar_default_image_when_no_email_found_first_character_z()
     {
         $user = User::factory()->create([
-            'name' => 'Andrew',
             'email' => 'zfakeemail@fakeemail.com',
         ]);
 
@@ -51,11 +51,11 @@ class GravatarTest extends TestCase
         $this->assertTrue($response->successful());
     }
 
-    /** @test */
+    /** @test
+     */
     public function user_can_generate_garavatar_default_image_when_no_email_found_first_character_0()
     {
         $user = User::factory()->create([
-            'name' => 'Andrew',
             'email' => '0fakeemail@fakeemail.com',
         ]);
 
@@ -70,11 +70,11 @@ class GravatarTest extends TestCase
         $this->assertTrue($response->successful());
     }
 
-    /** @test */
+    /** @test 
+     */
     public function user_can_generate_garavatar_default_image_when_no_email_found_first_character_9()
     {
         $user = User::factory()->create([
-            'name' => 'Andrew',
             'email' => '9fakeemail@fakeemail.com',
         ]);
 

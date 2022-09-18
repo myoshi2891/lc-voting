@@ -58,6 +58,7 @@ class CreateIdeaTest extends TestCase
     }
 
     /** @test
+     * @group test
      */
     public function creating_an_idea_works_correctly()
     {

@@ -43,22 +43,29 @@
                             shadow-dialog rounded-xl z-10 py-3 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                 @can('update', $idea)
                                     <li><a href="#"
-                                            @click="
+                                            @click.prevent="
                                     isOpen = false
                                     $dispatch('custom-show-edit-modal')"
                                             class="hover:bg-gray-100 block transition duration-150 ease-in py-3 px-5">Edit
                                             Idea
                                         </a></li>
                                 @endcan
-                                <li><a href="#"
-                                        class="hover:bg-gray-100 block transition duration-150 ease-in py-3 px-5">Delete
-                                        Idea
-                                    </a></li>
 
-                                <li><a href="#"
+                                @can('delete', $idea)
+                                    <li><a href="#"
+                                            @click.prevent="
+                                    isOpen = false
+                                    $dispatch('custom-show-delete-modal')"
+                                            class="hover:bg-gray-100 block transition duration-150 ease-in py-3 px-5">Delete
+                                            Idea</a>
+                                    </li>
+                                @endcan
+                                <li>
+                                    <a href="#"
                                         class="hover:bg-gray-100 block transition duration-150 ease-in py-3 px-5">Mark
-                                        as
-                                        Spam</a></li>
+                                        as Spam
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>

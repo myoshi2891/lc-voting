@@ -1,6 +1,10 @@
 <div x-cloak x-data="{ isOpen: false }" x-show="isOpen" @keydown.escape.window="isOpen = false"
-    @custom-show-edit-modal.window="isOpen = true" x-init="window.livewire.on('WasUpdated', () => { isOpen = false })" class="fixed z-10 inset-0 overflow-y-auto"
-    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    @custom-show-edit-modal.window="
+    isOpen = true
+    $nextTick(() => $refs.title.focus())
+    "
+    x-init="window.livewire.on('WasUpdated', () => { isOpen = false })" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+    aria-modal="true">
     <div class="flex items-end justify-center min-h-screen">
         <div x-show.transition.opacity="isOpen" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
             aria-hidden="true">
@@ -23,7 +27,7 @@
                     created it.</p>
                 <form wire:submit.prevent="updateIdea" action="#" method="POST" class="space-y-4 px-4 py-6">
                     <div>
-                        <input wire:model.defer="title" type="text"
+                        <input wire:model.defer="title" x-ref="title" type="text"
                             class="w-full text-sm bg-gray-100 border-none rounded-xl placeholder-gray-900
                                 px-4 py-2"
                             placeholder="Your Idea" required>

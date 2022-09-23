@@ -139,7 +139,7 @@ class DeleteIdeaTest extends TestCase
         'votesCount' => 4,
       ])
       ->assertSee('Delete
-                                            Idea');
+                                                Idea');
   }
 
   /** 

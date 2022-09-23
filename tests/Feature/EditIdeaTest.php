@@ -117,8 +117,8 @@ class EditIdeaTest extends TestCase
                 'votesCount' => 4,
             ])
             ->assertSee('Edit
-                                            Idea
-                                        ');
+                                                Idea
+                                            ');
     }
 
     /** 

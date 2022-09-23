@@ -3,7 +3,7 @@
     isOpen = true
     $nextTick(() => $refs.title.focus())
     "
-    x-init="window.livewire.on('WasUpdated', () => { isOpen = false })" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+    x-init="Livewire.on('ideaWasUpdated', () => { isOpen = false })" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div class="flex items-end justify-center min-h-screen">
         <div x-show.transition.opacity="isOpen" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"

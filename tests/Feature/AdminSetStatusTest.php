@@ -83,9 +83,9 @@ class AdminSetStatusTest extends TestCase
             ])
             ->set('status', $statusInProgress->id)
             ->call('setStatus')
-            ->assertEmitted('statusWasUpdatted');
+            ->assertEmitted('statusWasUpdated');
 
-        $this->assertDatabaseHas('idea', [
+        $this->assertDatabaseHas('ideas', [
             'id' => $idea->id,
             'status_id' => $statusInProgress->id,
         ]);
@@ -116,7 +116,7 @@ class AdminSetStatusTest extends TestCase
             ->set('status', $statusInProgress->id)
             ->set('notifyAllVoters', true)
             ->call('setStatus')
-            ->assertEmitted('statusWasUpdatted');
+            ->assertEmitted('statusWasUpdated');
 
         Queue::assertPushed(NotifyAllVoters::class);
     }

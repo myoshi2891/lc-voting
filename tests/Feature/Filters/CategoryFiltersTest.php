@@ -153,6 +153,7 @@ class CategoryFiltersTest extends TestCase
                     && $ideas->first()->status->name === 'Open';
             });
     }
+
     /**
      * @test
      */
@@ -176,8 +177,7 @@ class CategoryFiltersTest extends TestCase
         Livewire::test(IdeasIndex::class)
             ->set('category', 'All Categories')
             ->assertViewHas('ideas', function ($ideas) {
-                return $ideas->count() === 3
-                    && $ideas->first()->category->name === 'Category 1';
+                return $ideas->count() === 3;
             });
     }
 }

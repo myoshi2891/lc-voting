@@ -10,7 +10,7 @@
 
 
 <div x-cloak x-data="{ isOpen: false }" x-show="isOpen" @keydown.escape.window="isOpen = false"
-    @if (!$livewireEventToOpenModal) {{ '@' . $eventToOpenModal }}.window="isOpen = true
+    @if (!$eventToOpenModal) {{ '@' . $eventToOpenModal }}.window="isOpen = true
    $nextTick(() => $refs.confirmButton.focus())" @endif
     x-init="Livewire.on('{{ $eventToCloseModal }}', () => { isOpen = false })
     @if($livewireEventToOpenModal) {

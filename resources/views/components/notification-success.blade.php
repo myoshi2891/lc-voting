@@ -16,16 +16,31 @@
 }" x-init="@if($redirect)
 $nextTick(() => showNotification(messageToDisplay))
 @else
-Livewire.on('{{ 'ideaWasUpdated' }}', message => {
+Livewire.on('ideaWasUpdated', message => {
     showNotification(message)
 })
-Livewire.on('{{ 'ideaWasMarkedAsSpam' }}', message => {
+Livewire.on('ideaWasMarkedAsSpam', message => {
     showNotification(message)
 })
-Livewire.on('{{ 'ideaWasMarkedAsNotSpam' }}', message => {
+Livewire.on('ideaWasMarkedAsNotSpam', message => {
     showNotification(message)
 })
-Livewire.on('{{ 'statusWasUpdated' }}', message => {
+Livewire.on('statusWasUpdated', message => {
+    showNotification(message)
+})
+Livewire.on('commentWasAdded', message => {
+    showNotification(message)
+})
+Livewire.on('commentWasUpdated', message => {
+    showNotification(message)
+})
+Livewire.on('commentWasDeleted', message => {
+    showNotification(message)
+})
+Livewire.on('commentWasMarkedAsSpam', message => {
+    showNotification(message)
+})
+Livewire.on('commentWasMarkedAsNotSpam', message => {
     showNotification(message)
 })
 @endif" x-show="isOpen"

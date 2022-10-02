@@ -62,8 +62,8 @@ class StatusFiltersTest extends TestCase
      */
     public function filltering_works_when_query_string_in_place()
     {
-        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
-        $statusInProgress = Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow text-white']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering']);
+        $statusInProgress = Status::factory()->create(['name' => 'In Progress']);
 
         Idea::factory()->create([
             'status_id' => $statusConsidering->id,

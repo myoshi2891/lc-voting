@@ -5,20 +5,20 @@ namespace Database\Factories;
 use App\Models\Idea;
 use App\Models\User;
 use App\Models\Status;
-use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Idea>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
  */
-class IdeaFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Idea::class;
+    protected $model = Comment::class;
 
     /**
      * Define the model's default state.
@@ -29,10 +29,9 @@ class IdeaFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'category_id' => Category::factory(),
+            'idea_id' => Idea::factory(),
             'status_id' => Status::factory(),
-            'title' => ucwords($this->faker->words(4, true)),
-            'description' => $this->faker->paragraph(5),
+            'body' => $this->faker->paragraph(5),
         ];
     }
 
@@ -41,8 +40,7 @@ class IdeaFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'user_id' => $this->faker->numberBetween(1, 20),
-                'category_id' => $this->faker->numberBetween(1, 4),
-                'status_id' => $this->faker->numberBetween(1, 5),
+                'status_id' => 1,
             ];
         });
     }

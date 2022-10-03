@@ -23,8 +23,10 @@
         @if ($notifications->isNotEmpty() && !$isLoading)
             @foreach ($notifications as $notification)
                 <li>
-                    <a href="{{ route('idea.show', $notification->data['idea_slug']) }}" {{-- @click.prevent=" --}}
-                        {{-- isOpen = false" --}}
+                    <a href="{{ route('idea.show', $notification->data['idea_slug']) }}"
+                        @click.prevent="
+                        isOpen = false"
+                        wire:click.prevent="markAsRead('{{ $notification->id }}')"
                         class="flex hover:bg-gray-100
                 transition duration-150 ease-in py-3 px-5">
                         <img src="{{ $notification->data['user_avatar'] }}" alt="avatar" class="w-10 h-10 rounded-xl">
@@ -44,7 +46,7 @@
                 </li>
             @endforeach
             <li class="border-t border-gray-300 text-center">
-                <button
+                <button wire:click="markAllAsRead" @click="isOpen = false"
                     class="w-full block font-semibold hover:bg-gray-100
                 transition duration-150 ease-in py-4 px-5">
                     Mark all as read

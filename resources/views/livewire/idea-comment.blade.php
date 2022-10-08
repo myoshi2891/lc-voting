@@ -25,8 +25,8 @@
                         Status Changed to "{{ $comment->status->name }}"
                     </h4>
                 @endif
-                <div>
-                    {{ $comment->body }}
+                <div class="mt-4 md:mt-0">
+                    {!! nl2br(e($comment->body)) !!}
                 </div>
             </div>
 
